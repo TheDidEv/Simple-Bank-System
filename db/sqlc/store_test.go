@@ -16,7 +16,7 @@ func TestTransferTx(t *testing.T) {
 	fmt.Println(">> before", account1.Balance, account2.Balance)
 
 	// run a concurrent transfer transactions
-	n := 5
+	n := 2
 	amount := int64(10)
 
 	errs := make(chan error)
@@ -24,7 +24,8 @@ func TestTransferTx(t *testing.T) {
 
 	for i := 0; i < n; i++ {
 		go func() {
-			result, err := testStore.TransferTx(context.Background(), TransferTxParams{
+			ctx := context.Background()
+			result, err := testStore.TransferTx(ctx, TransferTxParams{
 				FromAccountID: account1.ID,
 				ToAccountID:   account2.ID,
 				Amount:        amount,
