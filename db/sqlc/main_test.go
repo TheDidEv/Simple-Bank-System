@@ -16,7 +16,8 @@ const (
 
 var testQueries *Queries
 var testDB *sql.DB
-var testStore Store
+
+// var testStore Store
 
 func TestMain(m *testing.M) {
 	var err error
