@@ -9,7 +9,7 @@ import (
 
 var (
 	ErrInvalidToken = errors.New("token is invalid")
-	ErrEpiredToken  = errors.New("token was expired")
+	ErrExpiredToken = errors.New("token was expired")
 )
 
 type Payload struct {
@@ -37,7 +37,7 @@ func NewPayload(username string, duration time.Duration) (*Payload, error) {
 
 func (payload *Payload) Valid() error {
 	if time.Now().After(payload.ExpiredAt) {
-		return ErrEpiredToken
+		return ErrExpiredToken
 	}
 	return nil
 }
