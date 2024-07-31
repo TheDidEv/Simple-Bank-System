@@ -60,6 +60,6 @@ $ docker network connect bank-network simplebank
 # check network
 $ docker network inspect bank-network
 
-# after this we our project container can connect to DB on one network
+# after this we our project container can connect to DB on one network and creade DB (make postgres)
 $ docker run --name simplebankapp --network bank-network -p 8080:8080 -e GIN_MODE=release -e DB_SOURCE="postgresql://root:secret@simplebank/simple_bank?sslmode=disable" simplebank:latest
 ```
